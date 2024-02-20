@@ -17,11 +17,12 @@ spec:
     spec:
       containers:
       - name: python-application
-        image: flask-app:latest  #Docker image
+        image: python-app:latest  #Docker image
         imagePullPolicy: Always
         ports:
         - containerPort: 2024
           protocol: TCP
+        stdin: true
         resources:
           limits:
             cpu: "100m"
