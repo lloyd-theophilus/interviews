@@ -17,4 +17,4 @@ EXPOSE 2024
 ENV FLASK_APP=hello.py
 
 #Command to run the flask application
-CMD ["flask", "run", "--host=0.0.0.0", "--port=2024"]
+CMD ["python", "hello.py"]
