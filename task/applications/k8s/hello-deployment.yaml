@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app-deploy
+  name: python-application
   namespace: tiacourses
   labels:
     app: python-application
@@ -17,10 +17,11 @@ spec:
     spec:
       containers:
       - name: python-application
-        image: flask-application:latest  # Replace this with the name of your Docker image
+        image: flask-app:latest  #Docker image
         imagePullPolicy: Always
         ports:
         - containerPort: 2024
+          protocol: TCP
         resources:
           limits:
             cpu: "100m"
@@ -39,7 +40,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-app-svc
+  name: python-application
   namespace: tiacourses
   labels:
     app: python-application
