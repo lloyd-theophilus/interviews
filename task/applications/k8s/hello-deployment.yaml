@@ -23,11 +23,11 @@ spec:
         - containerPort: 2024
         resources:
           limits:
-            cpu: "800m"
-            memory: "512Mi"
+            cpu: "100m"
+            memory: "100Mi"
           requests:
-            cpu: "500m"
-            memory: "256Mi"
+            cpu: "100m"
+            memory: "100Mi"
       restartPolicy: Always
   strategy:
     type: RollingUpdate
