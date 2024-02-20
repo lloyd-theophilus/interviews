@@ -20,14 +20,14 @@ spec:
         image: python-app  # Replace this with the name of your Docker image
         ports:
         - containerPort: 2024
+        resources:
+          limits:
+            cpu: "800m"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
       restartPolicy: Always
-      resources:
-        limits:
-          cpu: "800m"
-          memory: "512Mi"
-        requests:
-          cpu: "500m"
-          memory: "256Mi"
 ---
 apiVersion: v1
 kind: Service
