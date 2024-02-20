@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: python-application
-        image: python-app:$TAG  # Replace this with the name of your Docker image
+        image: flask-application:latest  # Replace this with the name of your Docker image
         imagePullPolicy: Always
         ports:
         - containerPort: 2024
@@ -32,8 +32,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
+      maxUnavailable: 1
+      maxSurge: 1
 
 ---
 apiVersion: v1
