@@ -1,1 +1,19 @@
 #Write Me
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-application
+  namespace: tiacourses  # namespace
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'  # Address of Kubernetes API server
+    namespace: tiacourses  # Namespace to deploy the application
+  project: default
+  source:
+    repoURL: 'https://github.com/lloyd-theophilus/interviews.git'  # URL of Git repository containing Kubernetes manifests
+    targetRevision: HEAD
+    path: ./././k8s/hello-deployment.yaml  # Path to the Deployment YAML file
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
