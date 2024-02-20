@@ -7,7 +7,7 @@ metadata:
 spec:
   destination:
     server: 'https://kubernetes.default.svc'  # Address of Kubernetes API server
-    namespace: tiacourses  # Namespace to deploy the application
+    namespace: argocd  # Namespace to deploy the application
   project: default
   source:
     repoURL: 'https://github.com/lloyd-theophilus/interviews.git'  # URL of Git repository containing Kubernetes manifests
