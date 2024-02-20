@@ -1,5 +1,3 @@
-#hello deployment.yaml
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,52 +10,37 @@ spec:
   selector:
     matchLabels:
       app: python-application
-      tier: backend
   template:
     metadata:
       labels:
         app: python-application
-        tier: backend
     spec:
       containers:
       - name: python-application
         image: python-app  # Replace this with the name of your Docker image
         ports:
         - containerPort: 2024
-          protocol: TCP
       restartPolicy: Always
       resources:
-            limits:
-              cpu: "800m"
-              memory: "512Mi"
-            requests:
-              cpu: "500m"
-              memory: "256Mi"
-      volumes:
-        - name: cache-volume
-          emptyDir:
-            sizeLimit: 500Mi
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-
+        limits:
+          cpu: "800m"
+          memory: "512Mi"
+        requests:
+          cpu: "500m"
+          memory: "256Mi"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-application-servicee
+  name: python-application-service
   namespace: tiacourses
   labels:
     app: python-application
-    tier: backend
 spec:
   selector:
     app: python-application
-    tier: backend
   ports:
     - protocol: TCP
       port: 80
       targetPort: 2024
-  type: ClusterIP #NodePort
+  type: ClusterIP
