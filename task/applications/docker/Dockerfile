@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 2024
 
 # Define environment variable
-ENV set FLASK_APP=hello.py
+#ENV set FLASK_APP="hello.py"
 
-ENV export FLASK_APP=hello.py
+ENV export FLASK_APP="hello.py"
 
 # Run hello.py when the container launches
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
