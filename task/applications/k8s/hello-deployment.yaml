@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-application
+  name: python-application-deployment
   namespace: tiacourses
   labels:
     app: python-application
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: python-application
-        image: python-app:latest  #Docker image
+        image: lloyddigital/web-app:latest  #Docker image
         imagePullPolicy: Always
         ports:
         - containerPort: 2024
@@ -25,10 +25,10 @@ spec:
         stdin: true
         resources:
           limits:
-            cpu: "100m"
-            memory: "100Mi"
+            cpu: "500m"
+            memory: "128Mi"
           requests:
-            cpu: "100m"
+            cpu: "250m"
             memory: "100Mi"
       restartPolicy: Always
   strategy:
@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-application
+  name: python-application-svc
   namespace: tiacourses
   labels:
     app: python-application
