@@ -1,1 +1,107 @@
+<<<<<<< HEAD
 #hello deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-application-deployment
+  namespace: tiacourses
+  labels:
+    app: flask-application
+=======
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-application-deployment
+  namespace: tiacourses
+  labels:
+    app: python-application
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+<<<<<<< HEAD
+      app: flask-application
+  template:
+    metadata:
+      labels:
+        app: flask-application
+    spec:
+      containers:
+      - name: flask-application
+        image: lloyddigital/flask-app:latest  # Replace this with the name of your Docker image
+        ports:
+        - containerPort: 2024
+        resources:
+          limits:
+            cpu: "800m"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+=======
+      app: python-application
+  template:
+    metadata:
+      labels:
+        app: python-application
+    spec:
+      containers:
+      - name: python-application
+        image: lloyddigital/web-app:latest  #Docker image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2024
+          protocol: TCP
+        stdin: true
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+          requests:
+            cpu: "250m"
+            memory: "100Mi"
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+<<<<<<< HEAD
+      maxUnavailable: 25%
+      maxSurge: 25%
+=======
+      maxUnavailable: 1
+      maxSurge: 1
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+<<<<<<< HEAD
+  name: flask-application-svc
+  namespace: tiacourses
+  labels:
+    app: flask-application
+spec:
+  selector:
+    app: flask-application
+=======
+  name: python-application-svc
+  namespace: tiacourses
+  labels:
+    app: python-application
+spec:
+  selector:
+    app: python-application
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 2024
+<<<<<<< HEAD
+
+=======
+  type: ClusterIP
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5

@@ -1,1 +1,32 @@
 #Write Me
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-application
+<<<<<<< HEAD
+  namespace: tiacourses  # Change this namespace to your desired namespace
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'  # Address of your Kubernetes API server
+    namespace: tiacourses  # Namespace where you want to deploy the application
+  project: default
+  source:
+    repoURL: 'https://github.com/lloyd-theophilus/interviews.git'  # URL of your Git repository containing Kubernetes manifests
+    targetRevision: HEAD
+    path: ././k8s/hello-deployment.yaml  # Path to your Deployment YAML file
+=======
+  namespace: tiacourses  # namespace
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'  # Address of Kubernetes API server
+    namespace: argocd  # Namespace to deploy the application
+  project: default
+  source:
+    repoURL: 'https://github.com/lloyd-theophilus/interviews.git'  # URL of Git repository containing Kubernetes manifests
+    targetRevision: HEAD
+    path: ././k8s/hello-deployment.yaml  # Path to the Deployment YAML file
+>>>>>>> 206f1cdf7052d3ac22b0eb19e2c9bdc32e6343c5
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
